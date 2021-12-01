@@ -17,13 +17,17 @@ public class Jump : MonoBehaviour
     {
         if (other.CompareTag("Jump"))
         {
-            rb.AddForce(0, transform.position.y + 10, 0, ForceMode.Impulse);
+            rb.AddForce(0, transform.position.y + 30, 0, ForceMode.Impulse);
             anim.SetTrigger("Jump");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        anim.SetBool("Run", true);
+        if (other.CompareTag("Jump"))
+        {
+            anim.SetBool("Run", true);
+        }
+       
     }
 }

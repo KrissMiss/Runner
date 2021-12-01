@@ -5,7 +5,7 @@ using UnityEngine;
 public class TouchInput : MonoBehaviour
 {
     public InputHandler inputHandler;
-    
+    public Menu menu;
 
     private void Start()
     {
@@ -14,14 +14,16 @@ public class TouchInput : MonoBehaviour
     Touch touch;
     private void MovePlayer()
     {
-        if (inputHandler.IsThereTouchInput())
+        if (inputHandler.IsThereTouchInput() && menu.pause == false)
         {
             touch = Input.GetTouch(0);
+
 
             if (touch.deltaPosition.x > 50 && touch.deltaPosition.y < 50 && touch.deltaPosition.y > -50 && transform.rotation.eulerAngles.y == 270)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.4f);
             }
+
 
             if (touch.deltaPosition.x < -50 && touch.deltaPosition.y < 50 && touch.deltaPosition.y > -50 && transform.rotation.eulerAngles.y == 270)
             {

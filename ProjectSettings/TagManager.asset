@@ -12,6 +12,17 @@ TagManager:
   - Crystal
   - ArrowUp
   - Ship
+  - SpeedUp
+  - SuperJump
+  - Cryst1.5
+  - Cryst2
+  - Cryst2.5
+  - Cryst3
+  - Cryst3.5
+  - Cryst4
+  - Cryst4.5
+  - Cryst5
+  - Cryst1
   layers:
   - Default
   - TransparentFX

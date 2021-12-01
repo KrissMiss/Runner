@@ -11,11 +11,15 @@ public class PlayerMovement : MonoBehaviour
     bool turnRight = false;
     bool turnRight2 = false;
     public float turnAngle = 30;
+    public GameObject diePanel;
+    public bool end = false;
+    public Menu menu;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        end = false;
     }
 
 
@@ -25,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < 0.9)
         {
-            speed = 0;
-            rb.AddForce(transform.position.x, transform.position.y - 100, transform.position.z, ForceMode.Impulse);
+            Time.timeScale = 0;
+            end = true;
+            diePanel.SetActive(true);
+            menu.pause = true;
         }
 
 
@@ -86,6 +92,19 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("TurnRight2"))
         {
             turnRight2 = true;
+        }
+
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            Time.timeScale = 0;
+            diePanel.SetActive(true);
+            end = true;
+            menu.pause = true;
         }
     }
 }
